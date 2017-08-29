@@ -18,8 +18,8 @@ public class ServerAp {
 	private static Map<SocketChannel, Queue<ByteBuffer>> pendingData = new HashMap<SocketChannel, Queue<ByteBuffer>>();
 
 	// static Selector selector;
-	private final static String HOSTNAME = "192.168.3.100";
-	private final static int PORT_THSERVER = 1901;
+	private final static String HOSTNAME = "192.168.3.101";
+	private final static int PORT_THSERVER = 1234;
 
 	public static void main(String[] args) throws IOException {
 		Selector selector = Selector.open();
@@ -66,7 +66,7 @@ public class ServerAp {
 				buf.put(i, (byte) buf.get(i));
 			}
 			stringInputBuffer.append(new String(buf.array(), "UTF-8").trim());
-			System.out.println("write function: " + stringInputBuffer);
+			System.out.println("write function: " + stringInputBuffer + "| socket:" + socket.toString());
 
 			stringOutputBuffer = Util.transmogrify(stringInputBuffer);
 
